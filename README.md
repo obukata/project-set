@@ -54,7 +54,7 @@ project-name_v1.x
 * 作業ディレクトリ、開発ディレクトリを別に。
 
 ```
-project-name_v1.x
+project-name_v2.x
   |     
   +-src
   |   +-index.html
@@ -63,7 +63,6 @@ project-name_v1.x
   |       +-includes
   |       +-sass
   |       +-scripts
-  |
   |
   +-dev
   |   +-index.html
@@ -75,6 +74,63 @@ project-name_v1.x
   +-node_modules
   +-Gruntfile.js
   +-package.json
+  +-README.md
+```
+
+####v3.x系
+
+IncludeとSass展開のみ。比較的簡単に共通ファイルの作成とSassの展開、ライブリロードで作業できる。
+
+* ファイル監視
+* ローカルサーバー立ち上げ
+* Sass展開
+* Includeでの共通ファイル作成
+
+```
+project-name_v3.x
+  |     
+  |-index.html
+  |-assets
+  |   +-images
+  |   +-includes
+  |   +-sass
+  |   +-scripts
+  |
+  +-node_modules
+  +-Gruntfile.js
+  +-package.json
+  +-README.md
+```
+
+####v4.x系
+
+webpack通り越して、parcelがやってきたよ。新時代のバンドラー。期待。
+
+起動コマンドはこんなもん `parcel index.html -d "../dist/"`
+
+今後の課題は、バンドルして出力後のファイル名変えれるの？ディレクトリ別に出力できるの？など。
+
+* ファイル監視
+* ローカルサーバー立ち上げ
+* Sass、babelなど設定ファイル何もかかなくても勝手にやってくれる。
+
+```
+project-name_v4.x
+  |     
+  +-src
+  |   +-index.html
+  |   +-assets
+  |       +-images
+  |       +-sass
+  |       +-scripts
+  |       +-node_modules
+  |       +-package.json
+  |
+  +-dist
+  |   +-index.html
+  |   +-バンドル後ランダム英数字.js
+  |   +-バンドル後ランダム英数字.css
+  |
   +-README.md
 ```
 

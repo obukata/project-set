@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"../sass/core.scss","loc":{"line":4,"column":7}}],"generated":{"js":"'use strict';\n\n// import sass files\n\nrequire(\"../sass/core.scss\");"},"hash":"ff7f470d14c2ac14e1b6868c3ce02f68"}
