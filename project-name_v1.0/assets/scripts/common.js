@@ -1,69 +1,70 @@
-// HTMLの読み込みが完全に完了したタイミングで発火
-// 画像の幅など取得する場合はこっち。
-window.addEventListener('load', function() {
-	'use strict';
-
-}, false);
 
 
+// こんな感じに書けばいい感じjsテンプレート v1.0.0
+// （イベント呼び出しjs）
+// ------------------------------------------
+// ・イベント発火タイミングには関数の呼び出しのみする。
+// ・関数の処理内容などは関数定義にて同じように定義する。
+// ・メンテナンス性などを考慮し、グローバルな空間を汚さない。
+// ・jQueryは早いうちに脱却するべし。
+// ・ES6に移行したい。（let, const, thisの挙動が分かりやすい。ES5以下は知らない。）
+// ・アロー関数使いたい。かっこいい。
+
+
+
+
+// ================================================================ //
+// イベント発火タイミング
+// ================================================================ //
+
+
+
+// ■ dom load
+// -----------------------*/
 
 // DOMの読み込みが完了したタイミングで発火
 // loadイベントより早い。
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
+
+	Obkt.accordion({
+		targetClickable: '#js--accordion .faq_detail_title',
+		targetBody: '#js--accordion .faq_detail_text',
+		targetBodyMarginBottom: '40px'
+	});
 
 }, false);
 
 
+// ■ load complete
+// -----------------------*/
+
+// HTMLの読み込みが完全に完了したタイミングで発火
+// 画像の幅など取得する場合はこっち。
+window.addEventListener('load', () => {
+	'use strict';
+
+	// Obkt.functionName2();
+
+}, false);
+
+
+// ■  jQuery dom load
+// -----------------------*/
 
 // かといってもjQueryいきなり無くすのは難しいかと思うので
 // jQuery系統はここで起動させよう。
-$(function() {
-	'use strict';
+// $(function() {
+// 	'use strict';
 
-})
-
-
-
-/* ======================= */
-/* 非jQueryの為に           */
-/* ======================= */
-
-// querySelectorが、jQueryの$('#name a')と同じように使えます。
-// が、#name だけが欲しい時とかはgetElementByIdのが早いらしいです。
-// document.getElementById('#name');
-// document.querySelector('#name');
-// document.querySelector('#name a'); 
-
-
-// addEventListenerが、jQueryの$('').on('click', function() { });のようなものです。
-// element.addEventListener('click', function() { }, false);
-// element.addEventListener('resize', function() { }, false);
-
-
-// 無名関数、今まで
-// var f = function(a, b) {
-// 	return a + b;
-// };
-// console.log(f(2, 4)); -> 6
-
-// これからはアロー関数どう？
-// const g = (a, b) => {
-// 	return a + b;
-// };
-// console.log(g(2, 4)); -> 6
-
-// アロー関数その2
-// const h = (a, b) => a + b;
-// console.log(h(2, 4)); -> 6
-
-
-// 即時実行、今まで
-// (function() {
-// 	console.log("text");
 // });
 
-// アロー関数にて即時実行
-// (() => {
-// 	console.log("text");
+
+// ■  jQuery load complete
+// -----------------------*/
+
+// jQuery系、完全ロードタイミング
+// $(window).on('load', function() {
+// 	'use strict';
+
 // });
