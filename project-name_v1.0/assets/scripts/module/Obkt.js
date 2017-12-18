@@ -29,13 +29,18 @@ let Obkt = {
 
 	// accordion
 	// targetClickable: アコーディオンのクリックするタブ。
+	// 　初期値：#js--accordion .accordion-title
 	// targetBody: クリックしたら開く部分
+	// 　初期値：#js--accordion .accordion-text
 	// targetBodyMarginBottom: 開く部分の下余白
+	// 　初期値：0px
+	// transiton: transitonの設定（ms）
 	/* ----------------------------------------------------------------
 		Obkt.according({
 			targetClickable: '#js--accordion .accordion-title',
-			targetBody: '#js--accordion .accordion',
-			targetBodyMarginBottom: '40px'
+			targetBody: '#js--accordion .accordion-text',
+			targetBodyMarginBottom: '40px',
+			transiton: 200
 		})
 	----------------------------------------------------------------
 		<ul id="js--accordion">
@@ -49,33 +54,50 @@ let Obkt = {
 			</li>
 		</ul>
 	---------------------------------------------------------------- */
-	accordion: ({targetClickable, targetBody, targetBodyMarginBottom}) => {
+	accordion: ({targetClickable, targetBody, targetBodyMarginBottom, transition}) => {
 		const tag = document.querySelectorAll(targetClickable);
+		const text = document.querySelectorAll(targetBody);
 		for(let i = 0; i < tag.length; i++) {
+			text[i].style.maxHeight = '0px';
+			text[i].style.overflow = 'hidden';
+			text[i].style.transition = 'all ' + transition + 'ms';
 			tag[i].addEventListener('click', () => {
-				const text = document.querySelectorAll(targetBody);
-				console.log(text);
-				this.classList.toggle('is--open');
-				if(text[i].style.maxHeight) {
-					text[i].style.maxHeight = null;
-					text[i].style.marginBottom = null;
-				}else {
+				tag[i].classList.toggle('is--open');
+				console.log(text[i].style.maxHeight);
+				if(text[i].style.maxHeight === '0px') {
+					console.log('y');
 					text[i].style.maxHeight = text[i].scrollHeight + 'px';
 					text[i].style.marginBottom = targetBodyMarginBottom;
+				}else {
+					console.log('n');
+					text[i].style.maxHeight = '0px';
+					text[i].style.marginBottom = null;
 				}
 			}, false);
 		}
 	},
 
-	loading: () => {
-		
+	ellipsis: (target) => {
+		const data = document.querySelectorAll(target);
+		for(let i = 0; i < data.length; i++ ) {
+			const getByteLength = (str) => {
+				str = (str === null) ? '' : str;
+				return encodeURI(str).replace(/%../g, '*').length;
+			}
+			const a = getByteLength(data[i].innerText);
+
+			if(a >= 144) {
+				// 文字列の取得開始位置と取得終了位置を設定
+				data[i].innerText = data[i].innerText.substring(0, 47);
+				data[i].innerText += '…';
+			}
+		}
 	},
 
 	functionName2: () => {
 		return;
 	}
 };
-
 
 
 
@@ -120,10 +142,10 @@ let Obkt = {
 
 // 即時実行、今まで
 // (function() {
-// 	console.log("text");
+// 	console.log('text');
 // });
 
 // アロー関数にて即時実行
 // (() => {
-// 	console.log("text");
+// 	console.log('text');
 // });

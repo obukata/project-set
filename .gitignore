@@ -21,6 +21,7 @@ $RECYCLE.BIN/
 # files #
 config.codekit
 *.map
+core.css
 .sass-cache
 temp
 

@@ -28,10 +28,12 @@ window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
 
 	Obkt.accordion({
-		targetClickable: '#js--accordion .faq_detail_title',
-		targetBody: '#js--accordion .faq_detail_text',
-		targetBodyMarginBottom: '40px'
+		targetClickable: '#js--accordion .accordion-title',
+		targetBody: '#js--accordion .accordion-text',
+		targetBodyMarginBottom: '40px',
+		transition: '200'
 	});
+	Obkt.ellipsis('.js--ellipsis');
 
 }, false);
 
