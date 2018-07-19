@@ -10,21 +10,19 @@
 
 ------------------------------------*/
 
-
-
 /*====================================
  
 	1. event Function
  
 ====================================*/
 
-window.addEventListener('DOMContentLoaded', function() {
-	'use strict'
-}, false)
+window.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+}, false);
 
-window.addEventListener('load', function() {
-	'use strict'
-})
+window.addEventListener('load', function () {
+  'use strict';
+});
 
 /*====================================
  
@@ -32,6 +30,6 @@ window.addEventListener('load', function() {
  
 ====================================*/
 
-var MJ = {
+var MJ = {};
 
-}
+let mmaaaaassdfsdfsd;

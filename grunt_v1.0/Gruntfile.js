@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
     autoprefixer: {
       options: {
-        browsers: ['last 2 versions', 'ie 8', 'ie 9']
+        browsers: ['last 2 versions']
       },
       file: {
         expand: true,
@@ -38,12 +38,18 @@ module.exports = function(grunt) {
       options : {
         dirs : [
           'assets/sass/*',
-          'assets/sass/'
+          'assets/sass/',
+          'assets/scripts/_scripts/*',
+          'assets/scripts/_scripts/'
         ],
         livereload : {
           enabled : true,
           extensions : ['js', 'scss', 'css', 'html']
         }
+      },
+
+      js : function(src) {
+        return ['babel']
       },
 
       scss : function(src) {
@@ -63,6 +69,22 @@ module.exports = function(grunt) {
           open     : 'http://0.0.0.0:9000/'
         }
       }
+    },
+
+    babel: {
+      option: {
+        sourceMap: true,
+        presets: ['@babel/preset-env', {
+          'targets': {
+            'browsers': ['last 2 versions', 'ie >= 11']
+          }
+        }]
+      },
+      dist: {
+        files: {
+          'assets/scripts/common.js': 'assets/scripts/_scripts/common.js'
+        }
+      }
     }
 
 
@@ -72,6 +94,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'sass',
     'autoprefixer',
+    'babel',
     'connect',
     'esteWatch'
   ]);
