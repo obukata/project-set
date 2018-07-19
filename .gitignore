@@ -21,12 +21,12 @@ $RECYCLE.BIN/
 # files #
 config.codekit
 *.map
-core.css
 .sass-cache
 temp
 
 # Node.jsモジュールのディレクトリは無視
 node_modules
 
-# コード生成用ディレクトリは無視
-dev
+# コンパイル、トランスパイル後ファイルは無視（開発環境が整っていない場合、以下は削除）
+bundle.js
+core.css

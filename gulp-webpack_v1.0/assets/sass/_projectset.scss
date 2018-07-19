@@ -1,0 +1,48 @@
+// Project Settings
+@import "util/baseset";
+
+//* ==================================================
+//	FontSet
+//================================================== */
+@mixin fontset_html_ja {
+  font-size: 62.5%; // = 10px = 1rem
+	font-family: $fontSansJa;
+  line-height: 1.6;
+}
+
+@mixin fontset_body_ja {
+	font-size: 14px;
+	font-size: 1.4em; // = 14px
+	// if you use 'rem' bug occurred in chrome
+}
+
+@mixin fontset_html_en {
+  font-size: 62.5%; // = 10px = 1rem
+	font-family: $fontSansEn;
+  line-height: 1.6;
+}
+
+@mixin fontset_body_en {
+	font-size: 14px;
+	font-size: 1.4em; // = 12px
+	// if you use 'rem' bug occurred in chrome
+}
+
+
+//* ==================================================
+//	Contents Width
+//================================================== */
+$InnerMinWidth: 1040px;
+$InnerMaxWidth: 1456px;
+$InnerMinWidth_sp: 320px; // iPhone5 Screen Size
+$InnerMaxWidth_sp: 414px; // iPhone6 Plus Screen Size
+
+
+//* ==================================================
+//	Color Scheme
+//================================================== */
+$white: #ffffff;
+$black: #000000;
+
+$baseTextColor: #111111;
+$baseLinkColor: #3c3c3c;

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*　*/
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+/*# sourceMappingURL=top_sp.css.map */
