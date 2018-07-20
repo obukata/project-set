@@ -1,7 +1,8 @@
 module.exports = {
-	mode: 'production',
+	// development, production
+	mode: 'development',
 	entry: [
-		// 'babel-polyfill',
+		'babel-polyfill',
 		'./assets/scripts/common.js',
 	],
 	output: {
