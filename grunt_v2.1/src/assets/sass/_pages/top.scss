@@ -5,15 +5,33 @@
 //* top.scss
 //*------------------------------------------------------------------------------*/
 
-body.top.pc { // Component
+body#page--index { // Component
 
-} // [end] body.top.pc
+//* visual
+//*------------------------------------------------------------------------------*/
+
+	.visual {
+	}
+	@media (max-width: $InnerMinWidth) {
+		.visual {
+		}
+	}
+	@media (max-width: $InnerMaxWidth_tb) {
+		.visual {
+		}
+	}
+	@media (max-width: $InnerMaxWidth_sp) {
+		.visual {
+		}
+	}
+
+} // [end] body#page--index
 
 
 //*------------------------------------------------------------------------------*/
 //* hover Effects
 //*------------------------------------------------------------------------------*/
 
-body.top.pc { // Component
+body#page--index { // Component
 
-} // [end] body.top.pc
+} // [end] body#page--index
