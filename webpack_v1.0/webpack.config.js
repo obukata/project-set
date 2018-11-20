@@ -11,6 +11,7 @@
 // build：納品用バンドル
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = [
 	// 【JavaScript】バンドル設定ですよ。
@@ -37,10 +38,19 @@ module.exports = [
 			open: true,
 			inline: true,
 			watchContentBase: true,
+			historyApiFallback: true,
 		},
 
 		module: {
 			rules: [
+				{
+					test: /\.vue$/,
+					use: [
+						{
+							loader: 'vue-loader',
+						},
+					],
+				},
 				{
 					test: /\.js$/,
 					use: [
@@ -49,13 +59,25 @@ module.exports = [
 							options: {
 								presets: [
 									'@babel/preset-env',
-								]
-							}
-						}
-					]
-				}
-			]
-		}
+								],
+							},
+						},
+					],
+				},
+			],
+		},
+		resolve: {
+			extensions: ['.js', '.vue'],
+			modules: [
+				'node_modules',
+			],
+			alias: {
+				vue: 'vue/dist/vue.common.js',
+			},
+		},
+		plugins: [
+			new VueLoaderPlugin(),
+		],
 	},
 
 
@@ -63,7 +85,7 @@ module.exports = [
 	{
 		// まずは、元になるscssファイルね。
 		entry: {
-			style: __dirname + '/assets/sass/core.scss'
+			style: __dirname + '/assets/sass/core.scss',
 		},
 
 		// 出力先の設定。
@@ -82,16 +104,16 @@ module.exports = [
 					// これについては良く分かっておりません。助けて。
 					use: ExtractTextPlugin.extract({
 						fallback: 'style-loader',
-						use: ['css-loader?-url&sourseMap', 'sass-loader']
-					})
-				}
-			]
+						use: ['css-loader?-url&sourseMap', 'sass-loader'],
+					}),
+				},
+			],
 		},
 
 		// 初期状態では、jsファイル内にcssの内容もバンドルされちゃうので
 		// プラグインを使用して、「core.css」ってファイルを作ります。
 		plugins: [
-			new ExtractTextPlugin('core.css')
-		]
-	}
+			new ExtractTextPlugin('core.css'),
+		],
+	},
 ]
